@@ -149,7 +149,7 @@ tbody td{padding:8px 12px;vertical-align:middle;}
 .picker-item:hover{background:var(--surface3);}
 .picker-item.selected{background:var(--blue-dim);}
 .picker-item .code-sm{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);}
-.picker-search{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:12px;padding:6px 9px;border-radius:var(--r);outline:none;margin-bottom:8px;transition:border .2s;}
+.picker-search{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:12px;padding:6px 9px;border-radius:var(--r);outline:none;margin-bottom:8px;}
 
 .toast{position:fixed;bottom:24px;right:24px;z-index:400;padding:11px 18px;border-radius:var(--r);font-size:13px;font-weight:500;transform:translateY(80px);opacity:0;transition:all .3s;}
 .toast.show{transform:translateY(0);opacity:1;}
@@ -259,7 +259,7 @@ tbody td{padding:8px 12px;vertical-align:middle;}
 <div class="page" id="page-ledger">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
       <label style="font-size:12px;color:var(--text2);">選取帳務本：</label>
-      <select id="ledgerSelector" onchange="switchLedgerBySelect()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:13px;padding:7px 10px;border-radius:var(--r);outline:none;">
+      <select id="ledgerSelector" onchange="switchLedgerBySelect()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:13px;padding:7px 10px;border-radius:var(--r);outline:none;flex:1;max-width:300px;">
         <option value="">-- 選擇帳務本 --</option>
       </select>
       <div class="ledger-tabs" id="ledgerTabs" style="flex:1;"></div>
@@ -346,7 +346,7 @@ tbody td{padding:8px 12px;vertical-align:middle;}
     <h3>🌐 代理設定 (Proxy Configuration)</h3>
     <p style="font-size:12px;color:var(--text3);margin-bottom:14px;">選擇 CORS 代理以成功獲取現價。(Choose a proxy to fetch live prices)</p>
     <div class="gas-row">
-      <select id="proxySelect" style="background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:12px;padding:7px 10px;border-radius:var(--r);outline:none;flex:1;">
+      <select id="proxySelect" style="background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:12px;padding:7px 10px;border-radius:var(--r);outline:none;">
         <option value="cors-anywhere">CORS Anywhere (推薦)</option>
         <option value="allorigins">AllOrigins</option>
         <option value="api-allorigins">API AllOrigins</option>
@@ -372,7 +372,7 @@ tbody td{padding:8px 12px;vertical-align:middle;}
 
   <div class="gas-panel">
     <h3>📁 上傳股票數據檔案</h3>
-    <p style="font-size:12px;color:var(--text2);margin-bottom:14px;">上傳股票數據檔案（JSON / CSV / XLSX），系統會在本地HTML中載入。<br/>注意：股票數據僅保存在本地瀏覽器。</p>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:14px;">上傳股票數據檔案（JSON / CSV / XLSX），系統會在本地HTML中載入。<br/>注意：股票數據僅保存在本地瀏覽器，不上傳到伺服器。</p>
     <div class="gas-row">
       <input type="file" id="dataFile" accept=".json,.csv,.xls,.xlsx" style="flex:1;">
       <button class="btn" onclick="uploadDataFile()">📤 上傳股票</button>
@@ -404,7 +404,8 @@ tbody td{padding:8px 12px;vertical-align:middle;}
     <h3>🎯 手動選取標的</h3>
     <div style="display:flex;gap:8px;margin-bottom:8px;">
       <input class="picker-search" id="pickerSearch" placeholder="搜尋..." oninput="filterPicker()" style="flex:1;margin:0;">
-      <select id="pickerCatFilter" onchange="filterPicker()" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:12px;padding:6px;border-radius:var(--r);outline:none;"></select>
+      <select id="pickerCatFilter" onchange="filterPicker()" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:12px;padding:6px;border-radius:var(--r);outline:none;">
+      </select>
     </div>
     <div class="stock-picker">
       <div>
@@ -472,7 +473,7 @@ tbody td{padding:8px 12px;vertical-align:middle;}
   <div class="modal" style="max-width:600px;">
     <h3>✏️ 手動編輯現價</h3>
     <p style="font-size:11px;color:var(--text3);margin-bottom:12px;">在下方輸入股票代號和價格。格式: 代號=價格，每行一筆。(例: 2330=800)</p>
-    <textarea id="manualPriceInput" style="width:100%;height:200px;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;padding:10px;border-radius:var(--r);outline:none;resize:vertical;" placeholder="2330=800&#10;3008=150"></textarea>
+    <textarea id="manualPriceInput" style="width:100%;height:200px;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;padding:8px 10px;border-radius:var(--r);outline:none;resize:vertical;"></textarea>
     <div id="manualPriceStatus" style="margin-top:8px;font-size:12px;color:var(--text3);"></div>
     <div class="modal-actions">
       <button class="btn ghost" onclick="document.getElementById('manualPriceModal').classList.remove('open')">取消</button>
@@ -643,7 +644,7 @@ function renderLedgerTabs() {
 
   const sel = document.getElementById('ledgerSelector');
   if(sel) {
-    sel.innerHTML = '<option value="">-- 選擇帳務本 --' + 
+    sel.innerHTML = '<option value="">-- 選擇��務本 --' + 
       dates.map(d => `<option value="${d}" ${d===currentLedgerDate?'selected':''}>${formatDateLabel(d)}</option>`).join('');
     sel.value = currentLedgerDate;
   }
@@ -904,7 +905,7 @@ async function fetchLivePricesForLedger() {
 }
 
 // ============================================================
-// REMAINING FUNCTIONS (保留原有功能)
+// BASIC UI FUNCTIONS
 // ============================================================
 
 function showToast(msg, type) {
@@ -1001,210 +1002,205 @@ function clearAllPerfData() {
   }
 }
 
-function renderLedger() {
-  if(!currentLedgerDate || !ledger[currentLedgerDate]) { ensureTodayLedger(); }
-
-  const banner = document.getElementById('ledgerPriceBanner');
-  const isStale = !livePriceTimestamp || (Date.now() - livePriceTimestamp > 3600000);
-  banner.style.display = isStale ? 'block' : 'none';
-
-  let data = (ledger[currentLedgerDate] || []).map((r,idx) => ({...r, _idx:idx}));
-
-  const dateF = document.getElementById('ledgerDateFilter').value;
-  const catF = document.getElementById('ledgerCatFilter').value;
-  const q = (document.getElementById('ledgerSearch').value||'').toLowerCase();
-
-  if(dateF) data = data.filter(r => r.date===dateF);
-  if(catF) data = data.filter(r => r.cat===catF);
-  if(q) data = data.filter(r => r.code.includes(q)||r.name.toLowerCase().includes(q));
-
-  document.getElementById('ledgerEmpty').style.display = data.length?'none':'block';
-  document.getElementById('ledgerTable').style.display = data.length?'table':'none';
-
-  document.getElementById('ledgerBody').innerHTML = data.map(r => {
-    const lp = livePrices[r.code]||r.buyPrice;
-    const isLive = !!livePrices[r.code];
-    const invested = r.shares*r.buyPrice;
-    const curVal = r.shares*lp;
-    const pnl = curVal-invested;
-    const pct = invested>0?pnl/invested*100:0;
-    const pnlCls = pnl>=0?'pos':'neg';
-    const cc = CAT_COLORS[r.cat]||'#888';
-    const cl = CAT_LABELS[r.cat]||r.cat;
-    const liveBadge = isLive
-      ? `<span class="live-badge">即時</span>`
-      : `<span class="live-badge stale">估算</span>`;
-    return `<tr>
-      <td class="code">${r.date}</td>
-      <td class="code">${r.code}</td>
-      <td class="name">${r.name}</td>
-      <td><span class="cat-tag" style="background:${cc}22;color:${cc}">${cl}</span></td>
-      <td class="price-cell">${r.buyPrice.toFixed(2)}</td>
-      <td class="price-cell">${r.shares}</td>
-      <td class="price-cell">${invested.toFixed(0)}</td>
-      <td class="price-cell">${lp.toFixed(2)}${liveBadge}</td>
-      <td class="price-cell">${curVal.toFixed(0)}</td>
-      <td class="pnl-cell ${pnlCls}">${pnl>=0?'+':''}${pnl.toFixed(0)}</td>
-      <td class="pct-cell ${pnlCls}">${pct>=0?'+':''}${pct.toFixed(1)}%</td>
-      <td><button class="btn red" style="padding:3px 8px;font-size:11px;" onclick="alert('刪除功能開發中')">刪除</button></td>
-    </tr>`;
-  }).join('');
-}
-
-function setPeriod(p, btn) {
-  currentPeriod = p;
-  document.querySelectorAll('.period-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderLedger();
-}
-
-function addOneLedger(code, name, cat, price, score) {
-  const targetDate = document.getElementById('saveLedgerSelect').value;
-  const today = new Date().toISOString().split('T')[0];
-  const shares = calcShares(price);
-  if(shares===0) { showToast('價格過高', 'fail'); return; }
-  if(!ledger[targetDate]) ledger[targetDate] = [];
-  ledger[targetDate].push({ date:today, code, name, cat, buyPrice:price, shares, score });
-  renderLedgerTabs();
-  showToast('已加入 '+name, 'ok');
-}
-
-function saveTodayToGAS() {
-  const targetDate = document.getElementById('saveLedgerSelect').value;
-  const data = getFilteredStocks();
-  const today = new Date().toISOString().split('T')[0];
-  let added = 0;
-  if(!ledger[targetDate]) ledger[targetDate] = [];
-  data.forEach(s => {
-    const shares = calcShares(s['現價']);
-    if(shares>0) {
-      ledger[targetDate].push({ date:today, code:s['代號'], name:s['名稱'], cat:s['分類'], buyPrice:s['現價'], shares, score:s['貝氏評分'] });
-      added++;
-    }
-  });
-  renderLedgerTabs();
-  showToast('已加入 '+added+' 檔', 'ok');
-}
-
-function updateSaveLedgerSelect() {
-  const select = document.getElementById('saveLedgerSelect');
-  const today = new Date().toISOString().split('T')[0];
-  const dates = [...new Set([...Object.keys(ledger), today])].sort().reverse();
-  select.innerHTML = dates.map(d => `<option value="${d}">${formatDateLabel(d)}</option>`).join('');
-}
-
-function openAddManual() {
-  document.getElementById('addModal').classList.add('open');
-}
-
-function openAddLedgerModal() {
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('newLedgerDate').value = today;
-  document.getElementById('addLedgerModal').classList.add('open');
-}
-
-function submitManualAdd() {
-  const code = document.getElementById('addCode').value.trim();
-  const name = document.getElementById('addName').value.trim();
-  if(!code || !name) { showToast('請填寫必填欄位', 'fail'); return; }
-  document.getElementById('addModal').classList.remove('open');
-  showToast('已新增 '+name, 'ok');
-}
-
-function submitAddLedger() {
-  const nd = document.getElementById('newLedgerDate').value;
-  if(!nd) { showToast('請選擇日期', 'fail'); return; }
-  if(ledger[nd]) { showToast('帳本已存在', 'fail'); return; }
-  ledger[nd] = [];
-  currentLedgerDate = nd;
-  renderLedgerTabs();
-  updateSaveLedgerSelect();
-  document.getElementById('addLedgerModal').classList.remove('open');
-  showToast('已新增帳本', 'ok');
-}
-
-function openManualPriceModal() {
-  document.getElementById('manualPriceInput').value = '';
-  document.getElementById('manualPriceModal').classList.add('open');
-}
-
-function applyManualPrices() {
-  const input = document.getElementById('manualPriceInput').value.trim();
-  if(!input) {
-    showToast('請輸入價格', 'fail');
+// ============================================================
+// UPLOAD DATA FILE
+// ============================================================
+function uploadDataFile() {
+  const fileInput = document.getElementById('dataFile');
+  const file = fileInput.files[0];
+  if(!file) {
+    showToast('請選擇檔案', 'fail');
     return;
   }
 
-  const lines = input.split('\n').filter(l => l.trim());
-  let success = 0;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      let data = [];
+      const content = e.target.result;
+      const ext = file.name.split('.').pop().toLowerCase();
 
-  lines.forEach(line => {
-    const parts = line.split('=').map(s => s.trim());
-    if(parts.length === 2) {
-      const [code, priceStr] = parts;
-      const price = parseFloat(priceStr);
-      if(!isNaN(price) && price > 0) {
-        livePrices[code] = price;
-        success++;
+      if(ext === 'json') {
+        data = JSON.parse(content);
+      } else if(ext === 'csv') {
+        const lines = content.split('\n').filter(l => l.trim());
+        const headers = lines[0].split(',').map(h => h.trim());
+        for(let i = 1; i < lines.length; i++) {
+          const values = lines[i].split(',').map(v => v.trim());
+          const row = {};
+          headers.forEach((h, idx) => {
+            row[h] = isNaN(values[idx]) ? values[idx] : parseFloat(values[idx]);
+          });
+          data.push(row);
+        }
+      } else if(ext === 'xlsx' || ext === 'xls') {
+        const workbook = XLSX.read(content, {type: 'binary'});
+        const sheetName = workbook.SheetNames[0];
+        data = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+      } else {
+        showToast('不支持的檔案格式', 'fail');
+        return;
       }
+
+      if(!Array.isArray(data) || data.length === 0) {
+        showToast('檔案格式不正確或數據為空', 'fail');
+        return;
+      }
+
+      // 驗證並替換 STOCKS_RAW
+      const required = ['代號', '名稱'];
+      const hasRequired = data.every(row => required.every(col => row[col] !== undefined));
+      if(!hasRequired) {
+        showToast('檔案必須包含「代號」和「名稱」欄位', 'fail');
+        return;
+      }
+
+      // 使用上傳的數據
+      STOCKS_RAW.length = 0;
+      data.forEach(row => {
+        STOCKS_RAW.push({
+          '代號': row['代號']?.toString() || '',
+          '名稱': row['名稱']?.toString() || '',
+          '貝氏評分': parseFloat(row['貝氏評分']) || 0,
+          '分類': row['分類'] || 'long_term',
+          '現價': parseFloat(row['現價']) || 0,
+          '漲幅': row['漲幅']?.toString() || ''
+        });
+        livePrices[row['代號']?.toString()] = parseFloat(row['現價']) || 0;
+      });
+
+      // 保存到 localStorage
+      localStorage.setItem('stocksData', JSON.stringify(STOCKS_RAW));
+      
+      // 刷新 UI
+      buildCatTabs();
+      renderPerf();
+
+      document.getElementById('uploadStatus').textContent = `✅ 成功載入 ${STOCKS_RAW.length} 筆股票數據`;
+      fileInput.value = '';
+      showToast(`成功上傳 ${STOCKS_RAW.length} 檔股票`, 'ok');
+    } catch(err) {
+      console.error('解析檔案失敗:', err);
+      showToast('解析檔案失敗: ' + err.message, 'fail');
     }
-  });
+  };
 
-  livePriceTimestamp = Date.now();
-  renderPerf();
-  renderLedger();
-  document.getElementById('manualPriceModal').classList.remove('open');
-  showToast('已套用 '+success+' 筆現價', 'ok');
-}
-
-function loadLedgerFromGAS(silent) {
-  if(!silent) showToast('功能開發中...', 'ok');
-}
-
-function testGAS() {
-  showToast('測試功能開發中...', 'ok');
-}
-
-function saveGASUrl() {
-  const url = document.getElementById('gasUrl').value.trim();
-  if(url) {
-    localStorage.setItem('gasUrl', url);
-    showToast('已儲存 GAS URL', 'ok');
+  if(file.type === 'application/json') {
+    reader.readAsText(file);
+  } else if(file.type === 'text/csv') {
+    reader.readAsText(file);
+  } else {
+    reader.readAsBinaryString(file);
   }
 }
 
+// ============================================================
+// CACHE MANAGEMENT
+// ============================================================
 function clearCache() {
-  if(confirm('確定要清除快取?')) {
-    localStorage.clear();
-    showToast('已清除', 'ok');
+  if(confirm('確定要清除所有快取？')) {
+    localStorage.removeItem('gasUrl');
+    localStorage.removeItem('proxySelect');
+    localStorage.removeItem('stocksData');
+    localStorage.removeItem('ledgerData');
+    localStorage.removeItem('livePrices');
+    showToast('快取已清除', 'ok');
+    location.reload();
   }
 }
 
 function clearAllStocks() {
-  if(confirm('確定要清除所有股票?')) {
-    livePrices = {};
+  if(confirm('確定要清除所有股票數據？')) {
+    STOCKS_RAW.length = 0;
+    localStorage.removeItem('stocksData');
+    buildCatTabs();
     renderPerf();
-    showToast('已清除', 'ok');
+    document.getElementById('uploadStatus').textContent = '已清除所有股票數據';
+    showToast('股票數據已清除', 'ok');
   }
 }
 
-function uploadDataFile() {
-  showToast('上傳功能開發中...', 'ok');
+// ============================================================
+// GAS FUNCTIONS (placeholder)
+// ============================================================
+function testGAS() {
+  showToast('GAS 連接測試開發中...', 'ok');
 }
 
-function copyGASCode() {
-  const code = document.getElementById('gasCode').value;
-  navigator.clipboard.writeText(code);
-  showToast('已複製', 'ok');
+function saveGASUrl() {
+  const url = document.getElementById('gasUrl').value;
+  if(!url) {
+    showToast('請輸入 GAS URL', 'fail');
+    return;
+  }
+  localStorage.setItem('gasUrl', url);
+  gasUrl = url;
+  showToast('GAS URL 已儲存', 'ok');
+}
+
+function syncToGAS() {
+  showToast('同步 GAS 功能開發中...', 'ok');
+}
+
+function loadLedgerFromGAS(silent) {
+  if(!gasUrl) {
+    if(!silent) showToast('未設定 GAS URL', 'fail');
+    return;
+  }
+  showToast('載入帳務本功能開發中...', 'ok');
 }
 
 function renderGASCode() {
-  document.getElementById('gasCode').value = '// GAS Code Template\nfunction doGet(e) {\n  return ContentService.createTextOutput("Hello");\n}';
+  const code = `
+function doPost(e) {
+  const action = e.parameter.action;
+  
+  if(action === 'save') {
+    // 保存帳務本
+    const sheet = SpreadsheetApp.getActiveSheet();
+    const data = JSON.parse(e.parameter.data);
+    // 實現保存邏輯
+    return ContentService.createTextOutput(JSON.stringify({success: true}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+  
+  if(action === 'load') {
+    // 載入帳務本
+    const sheet = SpreadsheetApp.getActiveSheet();
+    const data = sheet.getDataRange().getValues();
+    return ContentService.createTextOutput(JSON.stringify({data: data}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+  
+  return ContentService.createTextOutput(JSON.stringify({error: 'Unknown action'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+`;
+  document.getElementById('gasCode').value = code;
 }
 
-function renderCharts() {
-  showToast('圖表功能開發中...', 'ok');
+function copyGASCode() {
+  const code = document.getElementById('gasCode');
+  code.select();
+  document.execCommand('copy');
+  showToast('程式碼已複製', 'ok');
 }
+
+// ============================================================
+// PLACEHOLDER FUNCTIONS
+// ============================================================
+function saveTodayToGAS() { showToast('存今日帳本功能開發中...', 'ok'); }
+function openAddLedgerModal() { document.getElementById('addLedgerModal').classList.add('open'); }
+function submitAddLedger() { showToast('新增帳本功能開發中...', 'ok'); document.getElementById('addLedgerModal').classList.remove('open'); }
+function openManualPriceModal() { document.getElementById('manualPriceModal').classList.add('open'); }
+function applyManualPrices() { showToast('手動編輯現價功能開發中...', 'ok'); document.getElementById('manualPriceModal').classList.remove('open'); }
+function openAddManual() { document.getElementById('addModal').classList.add('open'); }
+function addOneLedger(code, name, cat, price, score) { showToast('新增帳務功能開發中...', 'ok'); }
+function submitManualAdd() { showToast('新增帳務功能開發中...', 'ok'); document.getElementById('addModal').classList.remove('open'); }
+function renderLedger() {}
+function setPeriod(p, btn) { currentPeriod = p; document.querySelectorAll('.period-tab').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+function updateSaveLedgerSelect() {}
+function renderCharts() {}
 </script>
 </body>
 </html>
